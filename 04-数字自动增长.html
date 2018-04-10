@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app">
+<input type="number" v-model="number">
+<!-- 如果函数语句简单可以直接内联写 -->
+<!-- <button v-on:click="number++">点击+1</button> -->
+<button v-on:click="handleIncrement">点击+1</button>
+<!-- 如果函数语句复杂可以写到JavaScript -->
+</div>
+	<script src="node_modules/vue/dist/vue.js"></script>
+	<script>
+	const app =	new Vue({
+		el:'#app',
+		data:{
+			number:1
+
+		},
+		//方法建议写到method中
+		methods:{ 
+			handleIncrement:function(){
+				this.number++
+			}
+		}
+	})
+	</script>
+</body>
+</html>

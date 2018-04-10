@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!--  -->
+	<div id="app">
+		<h1>{{ 'hello' + 'world'}}</h1>
+		<h1>{{ message }}</h1>
+		<h1>{{ message }}</h1>
+		<h1>{{ foo }}</h1>
+	</div>
+	<script src="node_modules/vue/dist/vue.js"></script>
+	<script>
+	//得到vue实例
+			const app = new Vue({
+				el:'#app',  //el选项的作用就是告诉VUe管理模板的入口节点
+				data:{ //data中的数据被称为响应式数据，数据驱动视图（MVVM）
+					message:'Hello Vue.js!'
+					foo:'bar'
+				}
+			})
+	</script>
+</body>
+</html>

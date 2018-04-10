@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- v-model是特殊属性  -->
+	<div id="app">
+		姓氏：<input type="text" value="李" v-model="firstname">
+		<br>
+		名字：<input type="text" value="鹏周" v-model="lastname">
+		<br>
+		<p id="fullname">{{ firstname+lastname  }}</p>
+	</div>
+	<script src="node_modules/vue/dist/vue.js"></script>
+	<script>
+	/*var firstname = document.getElementById('firstname')
+	var lastname = document.getElementById('lastname')
+	var fullname = document.getElementById('fullname')
+	firstname.addEventListener('input', handleTextInput)
+	lastname.addEventListener('input', handleTextInput)
+
+	function handleTextInput(){
+		fullname.innerHTML = firstname.value + lastname.value
+	}*/
+	//得到vue实例
+		const app =	 new Vue({
+				el:'#app',  //el选项的作用就是告诉VUe管理模板的入口节点
+				data:{ //data中的数据被称为响应式数据，数据驱动视图（MVVM）
+					firstname:'',
+					lastname:'',
+				}
+			})
+	</script>
+</body>
+</html>

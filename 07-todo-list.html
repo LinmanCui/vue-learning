@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.done{
+			text-decoration: line-through;
+			color:#ccc;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+	<h1>Todo</h1>
+	<p>{{ todos.filter(items => !items.done).length}} of {{ todos.length }} remaining [archive]</p>
+	<p v-for="(items,index) in todos">
+		<input type="checkbox" v-model="items.done">
+		<span v-bind:class="{done:items.done}">{{ items.title }}</span>
+		<button @click="handleRemoveToDoClick(index)">X</button>
+	</p>
+
+	<input type="text" v-model="todotext" @keydown.enter="handleAddToDoClick"><button @click="handleAddToDoClick">Add</button>
+	</div>
+	<script src="node_modules/vue/dist/vue.js"></script>
+	<script>
+	const todos = [
+	{
+		id:1,
+		title:'吃饭',
+		done:false
+	},
+	{
+		id:2,
+		title:'睡觉',
+		done:true
+	},
+	{
+		id:3,
+		title:'打豆豆',
+		done:true
+	},
+	]
+	const app = new Vue({
+		el:'#app',
+		data:{
+			todos,
+			todotext:'' 
+		},
+		methods:{
+			handleAddToDoClick(){
+				const todotext = this.todotext.trim() 
+				if(!todotext.length){
+					return
+				}
+				const todos = this.todos
+				todos.push({
+					id:todos[todos.length-1].id+1,
+					title:todotext,
+					done:false
+				})
+				this.todotext = ''
+			},
+			handleRemoveToDoClick(index){
+					this.todos.splice(index, 1)
+					
+			}
+		}
+
+	})
+	</script>
+</body>
+</html>
